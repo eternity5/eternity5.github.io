@@ -11,11 +11,12 @@ def warp_fresh():
         time.sleep(3)
         res = requests.get("https://www.cloudflare.com/cdn-cgi/trace")
         if res.status_code == 200 and "warp=on" in res.text:
+            print("Succeed!")
             break
         else:
             continue
     else:
-        requests.get("https://api.day.app/mXod6Bg3mnGbvXXR7edQoH/更换ip失败")
+        requests.get("https://api.day.app/mXod6Bg3mnGbvXXR7edQoH/Failure!!!")
         
         
 if __name__ == '__main__':
