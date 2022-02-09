@@ -17,9 +17,9 @@ def warp_fresh():
             continue
     else:
         requests.get("https://api.day.app/mXod6Bg3mnGbvXXR7edQoH/Failure!!!")
-        
-        
+
+
 if __name__ == '__main__':
-    while True:
-        warp_fresh()
-        time.sleep(5000)
+    time.sleep(30)
+    warp_fresh()
+    
