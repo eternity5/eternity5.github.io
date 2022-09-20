@@ -1,21 +1,50 @@
 {
+  "log": {
+    "access": "",
+    "error": "",
+    "loglevel": "info"
+  },
   "inbounds": [
     {
-        "port": 1080,
-        "protocol": "socks",
-        "sniffing": {
-          "enabled": true,
-          "destOverride": [
-            "http",
-            "tls"
+      "port": 443,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "1924131a-1379-4ea3-bbe0-d2debaf3b296",
+            "flow": "xtls-rprx-direct"
+          }
+        ],
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "dest": 80
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "xtls",
+        "tcpSettings": {},
+        "kcpSettings": {},
+        "wsSettings": {},
+        "httpSettings": {},
+        "quicSettings": {},
+        "grpcSettings": {},
+        "xtlsSettings": {
+          "certificates": [
+            {
+              "certificateFile": "/xray/vvmm.me_bundle.crt",
+              "keyFile": "/xray/vvmm.me.key"
+            }
+          ],
+          "alpn": [
+            "http/1.1"
           ]
-        },
-        "settings": {
-          "auth": "noauth",
-          "udp": true,
-          "allowTransparent": false
         }
-      }
+      },
+      "domain": "vvmm.me"
+    }
   ],
   "outbounds": [
     {
@@ -25,7 +54,7 @@
     {
       "protocol": "blackhole",
       "settings": {},
-      "tag": "blocked"
+      "tag": "block"
     }
   ],
   "routing": {
@@ -48,8 +77,8 @@
           "fc00::/7",
           "fe80::/10"
         ],
-        "outboundTag": "blocked"
+        "outboundTag": "block"
       }
     ]
-}
+  }
 }
